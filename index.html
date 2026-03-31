@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCHOOL OF DEATH | الدليل العالمي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --red: #ff3131; --bg: #0a0a0a; --card: #161616; --text: #e0e0e0; }
+        body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; margin: 0; padding-bottom: 50px; }
+        
+        /* الهيدر الجديد - فخامة وبساطة */
+        .main-header { padding: 40px 20px; text-align: center; background: linear-gradient(180deg, #1d0000 0%, #0a0a0a 100%); border-bottom: 1px solid #333; }
+        .main-header h1 { color: var(--red); font-size: 2.2rem; margin: 0; font-weight: 900; letter-spacing: 1px; }
+        .main-header p { color: #888; margin-top: 10px; font-size: 0.9rem; }
+
+        /* شريط البحث (شكلي فقط ليعطي طابع جوجل) */
+        .search-bar { background: #222; margin: -25px auto 20px; width: 85%; max-width: 500px; padding: 12px 20px; border-radius: 30px; border: 1px solid #444; color: #888; font-size: 0.9rem; display: flex; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+
+        /* أقسام المتجر */
+        .section-title { padding: 20px 25px 10px; font-size: 1.1rem; color: var(--red); font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .section-title span { color: #555; font-size: 0.8rem; }
+
+        .apps-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px; padding: 10px 20px; }
+        
+        .app-card { background: none; text-align: center; text-decoration: none; color: inherit; transition: 0.2s; }
+        .app-card:active { transform: scale(0.9); }
+        
+        .img-box { width: 85px; height: 85px; background: var(--card); border-radius: 18px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; border: 1px solid #222; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .img-box svg { width: 50px; height: 50px; }
+        
+        .app-label { font-size: 0.75rem; font-weight: bold; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px; }
+        .app-category { font-size: 0.65rem; color: #666; }
+
+        /* القائمة السفليّة (مثل الموبايل) */
+        .nav-bottom { position: fixed; bottom: 0; width: 100%; background: #111; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #333; z-index: 100; }
+        .nav-item { color: #555; font-size: 0.7rem; text-decoration: none; text-align: center; }
+        .nav-item.active { color: var(--red); }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>SCHOOL OF DEATH</h1>
+        <p>البوصلة العالمية لكل ما تحتاجه على الإنترنت</p>
+    </header>
+
+    <div class="search-bar">🔍 ابحث عن تطبيقات، كورسات، مواقع...</div>
+
+    <div class="section-title">تطبيقات الأحرار <span>عرض الكل</span></div>
+    <div class="apps-container">
+        
+        <a href="https://t.me/your_link" class="app-card">
+            <div class="img-box">
+                <svg viewBox="0 0 24 24"><path fill="#24A1DE" d="M11.944 0C5.346 0 0 5.346 0 11.944s5.346 11.944 11.944 11.944 11.944-5.346 11.944-11.944S18.542 0 11.944 0zm5.203 7.847l-1.742 8.215c-.132.581-.476.725-.963.451l-2.651-1.954-1.279 1.23c-.141.141-.26.26-.532.26l.191-2.703 4.919-4.445c.214-.19-.046-.296-.332-.106L8.71 13.13l-2.62-.819c-.57-.179-.581-.57.119-.844l10.23-3.942c.474-.173.888.11.708.322z"/></svg>
+            </div>
+            <span class="app-label">تليجرام</span>
+            <span class="app-category">تواصل</span>
+        </a>
+
+        <a href="https://www.mediafire.com/" class="app-card">
+            <div class="img-box">
+                <svg viewBox="0 0 24 24"><path fill="#FF3131" d="M12 2L2 19h20L12 2zm0 3.8L18.3 17H5.7L12 5.8z"/></svg>
+            </div>
+            <span class="app-label">ألعاب مهكرة</span>
+            <span class="app-category">ترفيه</span>
+        </a>
+
+    </div>
+
+    <div class="section-title">كورسات ومعرفة <span>جديد</span></div>
+    <div class="apps-container">
+        
+        <a href="https://www.coursera.org" class="app-card">
+            <div class="img-box">
+                <svg viewBox="0 0 24 24"><path fill="#0056D2" d="M0 0h24v24H0z" fill="none"/><path fill="#0056D2" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L8 14v1c0 1.1.9 2 2 2v2.93zM18 14.5c-.5-.5-1.5-.5-1.5-2.5V10c0-1.1-.9-2-2-2h-3V5.07c3.95.49 7 3.85 7 7.93 0 .51-.05 1.01-.14 1.5z"/></svg>
+            </div>
+            <span class="app-label">كورس برمجة</span>
+            <span class="app-category">تعليم</span>
+        </a>
+
+        <a href="https://archive.org" class="app-card">
+            <div class="img-box">
+                <svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2L1 21h22L12 2zm0 3.5L18.5 19H5.5L12 5.5z"/></svg>
+            </div>
+            <span class="app-label">مكتبة الكتب</span>
+            <span class="app-category">أرشيف</span>
+        </a>
+
+    </div>
+
+    <nav class="nav-bottom">
+        <a href="#" class="nav-item active">🏠<br>الرئيسية</a>
+        <a href="#" class="nav-item">🎮<br>ألعاب</a>
+        <a href="#" class="nav-item">📚<br>كورسات</a>
+        <a href="#" class="nav-item">⚙️<br>أدوات</a>
+    </nav>
+
+</body>
+</html>
