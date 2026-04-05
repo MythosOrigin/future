@@ -1,100 +1,1137 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCHOOL OF DEATH | الدليل العالمي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root { --red: #ff3131; --bg: #0a0a0a; --card: #161616; --text: #e0e0e0; }
-        body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; margin: 0; padding-bottom: 50px; }
-        
-        /* الهيدر الجديد - فخامة وبساطة */
-        .main-header { padding: 40px 20px; text-align: center; background: linear-gradient(180deg, #1d0000 0%, #0a0a0a 100%); border-bottom: 1px solid #333; }
-        .main-header h1 { color: var(--red); font-size: 2.2rem; margin: 0; font-weight: 900; letter-spacing: 1px; }
-        .main-header p { color: #888; margin-top: 10px; font-size: 0.9rem; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>حراج الأسد</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+<style>
+/* 🚀 تم تحديث حجم أيقونة البحث إلى 30px */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',Arial,sans-serif}
+html,body{height:100%}
+body{background:#f5f5f5;color:#111}
 
-        /* شريط البحث (شكلي فقط ليعطي طابع جوجل) */
-        .search-bar { background: #222; margin: -25px auto 20px; width: 85%; max-width: 500px; padding: 12px 20px; border-radius: 30px; border: 1px solid #444; color: #888; font-size: 0.9rem; display: flex; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+/* Top Bar */
+.top-bar{
+  position:fixed;top:0;left:0;width:100%;
+  background:#FFA500;color:#fff;display:flex;justify-content:space-between;align-items:center;
+  padding:12px 15px;z-index:1000;
+  border-bottom:1px solid rgba(0,0,0,0.2);
+}
 
-        /* أقسام المتجر */
-        .section-title { padding: 20px 25px 10px; font-size: 1.1rem; color: var(--red); font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        .section-title span { color: #555; font-size: 0.8rem; }
+/* 🌟 أيقونة القائمة (الهامبرغر) - عادت لتصبح SVG بالكامل */
+.menu-btn{
+  width:34px;
+  height:34px;
+  cursor:pointer;
+  user-select:none;
+  color:#000;
+  
+  /* يتم توسيط محتوى الـ SVG داخل الحاوية */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        .apps-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px; padding: 10px 20px; }
-        
-        .app-card { background: none; text-align: center; text-decoration: none; color: inherit; transition: 0.2s; }
-        .app-card:active { transform: scale(0.9); }
-        
-        .img-box { width: 85px; height: 85px; background: var(--card); border-radius: 18px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; border: 1px solid #222; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .img-box svg { width: 50px; height: 50px; }
-        
-        .app-label { font-size: 0.75rem; font-weight: bold; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px; }
-        .app-category { font-size: 0.65rem; color: #666; }
+/* 🌟 إستايلات SVG لضبط الأبعاد داخل الحاوية */
+.menu-btn svg {
+  width: 100%; 
+  height: 100%; 
+  fill: #000; /* تعبئة المستطيلات باللون الأسود */
+  display: block;
+}
 
-        /* القائمة السفليّة (مثل الموبايل) */
-        .nav-bottom { position: fixed; bottom: 0; width: 100%; background: #111; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #333; z-index: 100; }
-        .nav-item { color: #555; font-size: 0.7rem; text-decoration: none; text-align: center; }
-        .nav-item.active { color: var(--red); }
-    </style>
+.bell-btn{width:34px;height:34px;cursor:pointer;user-select:none}
+.bell-btn svg{width:100%;height:100%;fill:#000}
+.search-box{
+  flex:1;margin:0 12px;background:#fff;border-radius:25px;
+  /* ✅ تعيين البطانة اليمنى (لأن الاتجاه RTL) إلى 7px */
+  padding:10px 7px 10px 14px; 
+  display:flex;align-items:center;
+}
+.search-box .search-icon{
+  /* ⭐️ تم الحفاظ على 2px كمسافة داخلية بين الأيقونة والـ padding الذي أصبح 7px */
+  margin-left: 2px;
+  display: flex; 
+  align-items: center;
+  flex-shrink: 0; 
+}
+.search-box .search-icon svg{
+  fill: #555; 
+  /* ✅ تم التحديث هنا لفرض الحجم 30px */
+  width: 30px !important; 
+  height: 30px !important;
+  display: block;
+}
+.search-box .search-text{
+  flex:1;margin-left:5px;
+  /* ⚙️ تم تعديل الحجم إلى 20px */
+  font-size:20px; 
+  font-weight:700;color:#666;text-align:right;
+  /* ⚙️ تم إضافة وضع نسبي لتمكين الإزاحة لأسفل */
+  position: relative;
+  /* ⚙️ تم إنزال العنصر 3 بكسل لأسفل */
+  top: 3px; 
+}
+.search-box .search-text input{
+  width:100%;border:none;outline:none;background:transparent;
+  /* ⚙️ تم تعديل الحجم إلى 20px */
+  font-size:20px;
+  font-weight:700;
+  /* 🎯 التعديل الجديد: لجعل النص المكتوب أسود تمامًا */
+  color:#000; 
+  text-align:right;
+  direction: rtl;
+}
+/* 🎯 تعديل إضافي: لجعل لون الـ placeholder رمادي فاتح (لتمييزه عن النص المكتوب) */
+.search-box .search-text input::placeholder {
+    color: #666;
+    opacity: 1; /* للتأكد من ظهور اللون */
+}
+
+
+/* 🟢 تخصيص نمط علم ليبيا الدائري SVG */
+.search-box .flag-svg {
+  /* لضمان حجم وشكل دائري متناسق */
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 8px; 
+  overflow: hidden; 
+  flex-shrink: 0;
+}
+/* 🟢 نمط SVG للتأكد من تغطية المساحة المخصصة له */
+.search-box .flag-svg svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Feature Categories */
+.feature-card-wrapper{
+  position:fixed;top:75px;left:0;width:100%;
+  height:65px; 
+  background:#f0f0f0;
+  box-shadow:0 4px 8px rgba(0,0,0,0.15);
+  z-index:999;display:flex;align-items:flex-end;
+  /* ✅ التعديل المطلوب: إعادة تفعيل التمرير الأفقي */
+  overflow-x:auto;
+  padding:0 6px;
+}
+.feature-card-wrapper::-webkit-scrollbar{display:none}
+.feature-card{display:flex;align-items:flex-end;gap:12px;white-space:nowrap}
+.feature-item{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  /* اللون الافتراضي للكلمة */
+  color:#000; 
+  font-size:16px;font-weight:700;cursor:pointer;user-select:none;
+  flex-shrink:0;margin-bottom:0;position: relative;padding:0 6px;
+  background-color: transparent; 
+  -webkit-appearance: none;
+  appearance: none;
+  padding-bottom: 2px;
+}
+.feature-item input[type="radio"]{display:none;}
+
+/* التعديل الجديد: تطبيق اللون الأزرق على النص عند التحديد */
+.feature-item input:checked ~ .text {
+  color: #0056b3; /* نفس لون الخط المتحرك تماماً */
+}
+
+.feature-item .line{
+  height:3px;width:100%;background:#0056b3;
+  position:absolute;bottom:0;left:0;opacity:0;
+}
+.feature-item input:checked ~ .line{opacity:1;}
+.feature-item,
+.feature-item .text,
+.feature-card-wrapper,
+.feature-card,
+.feature-item * {
+  -webkit-tap-highlight-color: transparent; 
+  -webkit-touch-callout: none;               
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+::selection { background: transparent; color: inherit; }
+.feature-item:focus,
+.feature-item:active,
+.feature-item input:focus,
+.feature-item input:active,
+.feature-item *:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Content */
+/* 🏆 التعديل هنا: زيادة المسافة العلوية إلى 145 بكسل */
+.content-wrapper{padding-top:145px}
+.listings{display:flex;flex-direction:column;gap:5px;padding:0 10px 90px 10px}
+.card{
+  width:100%;background:#fff;border-radius:8px;overflow:hidden;
+  display:flex;flex-direction:row-reverse;align-items:center;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+  /* 🌟🌟 طول البطاقة 120 بكسل 🌟🌟 */
+  height:120px; 
+}
+.card .emoji{
+  width:120px;height:100%;display:flex;justify-content:center;align-items:center;font-size:50px;
+  border-radius:0 8px 8px 0;background:#fff;flex:0 0 120px;
+}
+.card .info{
+  
+  /* 🏆 التعديل الأساسي 1: إلغاء محاولة التوسيط العمودي والاعتماد على ترتيب العناصر */
+  display:flex;
+  flex-direction:column; 
+  justify-content: flex-start; /* تثبيت العناصر في الأعلى */
+  align-items: flex-start; 
+  gap: 0; 
+  min-width:0;overflow:hidden;
+  
+  /* 🏆 التعديل الأساسي 2: لتكون نقطة مرجعية للـ position: absolute; */
+  position: relative; 
+  height: 100%;
+  width:100%;text-align:right;
+  
+  /* بطانة العنصر الداخلي: علوي 0 | أيمن 7 | سفلي 0 | أيسر 2 */
+  padding: 0px 7px 0px 2px; 
+}
+
+/* ⭐️ الصف الذي يحتوي على معلومات الناشر والمتابعة */
+.publisher-row{
+  display:flex;align-items:center;justify-content:flex-start;
+  width:100%;
+  position: relative;
+  margin: 0; 
+  
+  /* 🏆 التعديل الأساسي 3: تثبيت صف الناشر في الأعلى */
+  margin-top: 0px; 
+  padding-top: 7px; /* لضمان وجود مسافة بينه وبين الحافة العلوية لـ .card */
+  
+  /* ⭐⭐ الهامش السفلي 6 بكسل (من طلب سابق) ⭐⭐ */
+  padding-bottom: 6px; 
+}
+.publisher {
+  display:flex;
+  flex-direction: row; 
+  align-items:center;
+  gap:10px; 
+  flex-shrink: 1; 
+  max-width: calc(100% - 70px);
+  overflow: hidden; 
+}
+
+/* 🏆 حاوية جديدة: لوضع الاسم والتوقيت عمودياً بجانب الأفاتار */
+.publisher-details {
+    display: flex;
+    flex-direction: column-reverse; 
+    align-items: flex-start; 
+    gap: 0; 
+    line-height: 1;
+    overflow: hidden; 
+    white-space: nowrap; 
+
+    position: relative;
+    top: 3px;
+}
+
+
+.avatar{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:#e6e6e6;
+  display:flex;align-items:center;justify-content:center;
+  color:#333;font-weight:800;
+  font-size:13px; 
+  flex-shrink:0;
+}
+.publisher-name {
+  display:flex;
+  flex-direction:row-reverse; 
+  align-items: center;
+  line-height:1;
+  font-size:13px; 
+  font-weight: 700;
+  gap: 4px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+.publisher-name span {
+  font-weight:900;
+  color:#000; 
+  font-size:13px; 
+}
+
+/* 🏆🏆 التعديلات المطلوبة على التوقيت 🏆🏆 */
+.time-ago {
+    font-size: 12px; 
+    color: #555;
+    font-weight: 700;
+    margin-top: 1px; 
+    
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    gap: 3px; 
+    
+    position: relative;
+    top: 0px; 
+}
+
+/* ✅ أنماط حاوية الـ SVG الجديدة */
+.time-ago svg {
+    width: 13px;
+    height: 13px;
+    
+    flex-shrink: 0;
+    position: relative;
+    top: -1.5px; 
+}
+
+.follow-btn{
+  background:#FFA500;color:#000;border:none;border-radius:6px;
+  
+  /* ✅ حجم الزر مصغر */
+  width: 40px; 
+  height: 18px;
+  padding: 0; 
+  
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  
+  font-weight:700;
+  user-select:none;white-space:nowrap;
+  position:absolute;
+  
+  /* 🏆🏆 التعديل النهائي: تم رفع الزر إلى 2 بكسل 🏆🏆 */
+  top: 9px; 
+  
+  /* ⭐⭐ تم الحفاظ على 20px ⭐⭐ */
+  left: 20px; 
+}
+
+.follow-btn .follow-text {
+    /* 🎯 حجم الخط الجديد 10px */
+    font-size: 10px; 
+    font-weight: 700;
+    
+    /* 🎯 إزاحة النص 2px للأسفل */
+    transform: translateY(2px); 
+    display: block;
+}
+
+/* 🏆 نمط العنوان الموحد (يمتد على سطرين) - جديد */
+.unified-title-row {
+  display: block; 
+  
+  /* 🏆 التعديل الأساسي 4: إزالة الهوامش العمودية وجعلها تعتمد على الهوامش حولها */
+  margin-top: 0;
+  margin-bottom: 0;
+  
+  /* ⭐ اللون الأزرق ⭐ */
+  color: #0056b3; 
+  
+  /* ⭐ حجم الخط 17 بكسل ⭐ */
+  font-size: 17px; 
+  font-weight: 800;
+  line-height: 1.3;
+  
+  /* تنسيق الامتداد على سطرين مع النقاط في النهاية */
+  overflow: hidden;
+  text-align: right; 
+  
+  /* 🏆 التعديل الأساسي 5: تحديد المساحة المتاحة للعنوان. 
+     الإجمالي (120) - صف الناشر (~37) - صف الإيموجي (~33) = ~50 بكسل مساحة متاحة (سطرين)
+  */
+  max-height: 50px; 
+  width: 100%;
+  
+  /* الخصائص الأساسية لتقييد النص على سطرين مع نقاط التجاوز */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* اقتصار على سطرين */
+  -webkit-box-orient: vertical;
+
+  /* 🎯 التعديل الجديد: إزاحة العنوان 3 بكسل للأسفل */
+  position: relative; 
+  top: 3px; 
+}
+
+/* ⭐⭐ الأنماط الجديدة لصف الإيموجي تحت العنوان ⭐⭐ */
+.reaction-row {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    
+    /* 🏆🏆 التعديل الأساسي 6: التثبيت المطلق للحافة السفلية تماماً (تم التحديث إلى -3px) */
+    position: absolute;
+    bottom: -3px; 
+    right: 7px; 
+    left: 2px; 
+    
+    /* 🏆🏆 التعديل الجديد 2: المسافة بين العناصر 4 بكسل 🏆🏆 */
+    gap: 4px;
+}
+
+/* 🏆🏆 النمط المضاف لأي إيموجي/نص داخل صف التفاعل لضمان الحجم 22 بكسل 🏆🏆 */
+.reaction-row span {
+    /* 🏆🏆 حجم الخط الموحد 22 بكسل 🏆🏆 */
+    font-size: 22px; 
+    flex-shrink: 0;
+    line-height: 1;
+    /* إزاحة طفيفة لضبط المحاذاة العمودية مع الأيقونة */
+    position: relative;
+    top: 1px; 
+}
+
+/* 🏆🏆 النمط المضاف لأيقونة المشاركة الجديدة SVG 🏆🏆 */
+.reaction-row .share-icon {
+    /* 🏆🏆 تم التحديث هنا: الحجم 33 بكسل 🏆🏆 */
+    width: 33px; 
+    height: 33px;
+    
+    /* تلوين الأيقونة باللون الأزرق */
+    fill: #007bff; /* تم استخدام الأزرق #007bff بدلاً من الأسود ليتناسب مع النمط السابق */
+    
+    /* لضمان محاذاة أفضل مع الإيموجي */
+    position: relative;
+    top: -2px; /* تم تعديل الإزاحة العلوية لتوسيط الأيقونة الجديدة مع الإيموجي */
+    flex-shrink: 0;
+}
+
+/* 🏆🏆 النمط الجديد لحاوية أيقونة المشاركة ورقم التفاعل 🏆🏆 */
+.reaction-row .share-info {
+    display: flex;
+    /* 🎯 التعديل: تغيير الترتيب ليظهر الرقم أولاً ثم الأيقونة */
+    flex-direction: row-reverse; 
+    align-items: center;
+    gap: 3px; /* المسافة بين الأيقونة والرقم */
+    flex-shrink: 0;
+}
+
+/* 🏆🏆 نمط رقم التفاعل 🏆🏆 */
+.reaction-row .share-info .share-count {
+    font-size: 14px; /* حجم معقول لرقم التفاعل */
+    font-weight: 700;
+    color: #555; /* لون رمادي فاتح ليتناسب مع النمط */
+    line-height: 1;
+    position: relative;
+    top: 2px; /* لتوسيط الرقم مع الأيقونة */
+}
+
+
+/* ========================================================== */
+/* 🌟 أنماط شريط التفاعلات الجديد (محاكاة فيسبوك) 🌟            */
+/* ========================================================== */
+
+/* 1. جعل القلب نقطة مرجعية للشريط */
+.like-button-wrapper {
+    position: relative;
+    cursor: pointer;
+    /* لمنع ظهور قائمة السياق في الهواتف عند الضغط الطويل */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 2. تنسيق وإخفاء شريط التفاعلات */
+.reaction-bar {
+    /* وضعه في الأعلى فوق القلب */
+    position: absolute;
+    bottom: 100%; /* يبدأ من فوق عنصر القلب تماماً */
+    
+    /* تنسيق الحاوية */
+    background: #fff;
+    border-radius: 50px;
+    padding: 5px 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    
+    /* عرض التفاعلات أفقياً */
+    display: flex;
+    gap: 10px; /* مسافة بين الإيموجي الجديد */
+    
+    /* إخفاء الشريط افتراضياً */
+    opacity: 0;
+    pointer-events: none; /* لتجنب التفاعل عندما يكون مخفياً */
+    transform: translateY(20px) scale(0.5); /* يبدأ صغيراً وأسفل قليلاً */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    
+    /* لضمان ظهوره فوق كل شيء */
+    z-index: 100; 
+    
+    /* 🏆🏆 التعديل المطلوب: ليتمركز فوق القلب بدلاً من اليمين 🏆🏆 */
+    /* يتم حساب القيمة يدوياً لتناسب حجم الشريط (~120px) وحجم الإيموجي (~22px) */
+    right: -100px; /* هذه القيمة تجعل الشريط يظهر يسار القلب قليلاً ليظهر بالكامل */
+}
+
+/* 3. تنسيق إيموجي التفاعل داخل الشريط */
+.reaction-bar .reaction-emoji {
+    font-size: 24px; /* حجم الإيموجي داخل الشريط */
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    
+    /* عند التحويم على إيموجي معين، يتم تكبيره قليلاً */
+    &:hover {
+        transform: translateY(-5px) scale(1.3);
+    }
+}
+
+/* 4. إظهار الشريط عند التحويم على حاوية القلب */
+.like-button-wrapper:hover .reaction-bar {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(-5px) scale(1); /* إظهار مع حركة للأعلى وتكبير */
+}
+
+
+/* ⚠️ إخفاء العناصر التي لم تعد مستخدمة */
+.description-row, .meta-row, .footer-row, .comments {
+  display: none !important; 
+}
+
+
+/* Bottom Nav */
+.bottom-nav{
+  position:fixed;bottom:0;width:100%;
+  background:#FFA500;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  color:#000;font-weight:bold;z-index:1000;
+  height:55px;
+  padding: 0 30px 3px 30px;
+  box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.20);
+}
+.bottom-nav div{
+  text-align:center;
+  cursor:pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.bottom-nav svg{ 
+  width: 35px;
+  height: 35px;
+  fill: currentColor;
+  position: relative;
+  top: 4px; 
+}
+/* أيقونة النشر */
+.publish-btn {
+    background: #000;
+    width: 50px;
+    height: 30px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    top: -9.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.publish-btn svg {
+    fill: #fff;
+    width: 24px;
+    height: 24px;
+    position: static;
+}
+</style>
 </head>
 <body>
 
-    <header class="main-header">
-        <h1>SCHOOL OF DEATH</h1>
-        <p>البوصلة العالمية لكل ما تحتاجه على الإنترنت</p>
-    </header>
+<div class="top-bar">
+  <div class="menu-btn" aria-label="فتح القائمة الجانبية">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34">
+      <rect x="5.1" y="3" width="23.8" height="3" rx="1.5" />
+      
+      <rect x="5.1" y="13" width="23.8" height="3" rx="1.5" />
+      
+      <rect x="5.1" y="23" width="23.8" height="3" rx="1.5" />
+    </svg>
+  </div>
+  <div class="search-box">
+    <div class="search-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="بحث">
+        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+    </div>
+    <div class="search-text"><input type="text" placeholder="إبحث في الأسد"></div>
+    
+    <div class="flag-svg" aria-label="علم ليبيا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice">
+            
+            <rect width="600" height="75" y="0" fill="#E70013"/> 
+            <rect width="600" height="150" y="75" fill="#000000"/> 
+            <rect width="600" height="75" y="225" fill="#009C3B"/> 
+            
+            <defs>
+                <mask id="crescentMask">
+                    <rect width="100%" height="100%" fill="white"/>
+                    <circle cx="306" cy="150" r="37" fill="black"/> 
+                </mask>
+            </defs>
+            
+            <circle cx="293" cy="150" r="40" fill="white" mask="url(#crescentMask)"/>
+            
+            <polygon fill="white" 
+                     points="0,-30 8.8,-9.2 28.5,-9.2 12.1,3.2 18.2,22.8 0,11.2 -18.2,22.8 -12.1,3.2 -28.5,-9.2 -8.8,-9.2"
+                     transform="translate(327, 150) scale(0.7)" 
+            />
+            
+        </svg>
+        </div>
+  </div>
+  <div class="bell-btn" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="إشعارات"><path d="M12 24c1.104 0 1.99-.896 1.99-2h-3.98c0 1.104.887 2 1.99 2zm6.364-6V11c0-3.07-1.639-5.64-4.5-6.32V4a1.864 1.864 0 0 0-3.728 0v.68c-2.861.68-4.5 3.25-4.5 6.32v7l-2 2v1h16v-1l-2-2z"/></svg>
+  </div>
+</div>
 
-    <div class="search-bar">🔍 ابحث عن تطبيقات، كورسات، مواقع...</div>
+<div class="feature-card-wrapper" role="tablist" aria-label="فئات">
+  <div class="feature-card">
+    <label class="feature-item" role="tab">
+      <input type="radio" name="feature" checked aria-hidden="true">
+      <span class="text">الرئيسية</span>
+      <span class="line"></span>
+    </label>
+    <label class="feature-item" role="tab">
+      <input type="radio" name="feature" aria-hidden="true">
+      <span class="text">ترندر</span>
+      <span class="line"></span>
+    </label>
+    <label class="feature-item" role="tab">
+      <input type="radio" name="feature" aria-hidden="true">
+      <span class="text">مدارسنا</span>
+      <span class="line"></span>
+    </label>
+    <label class="feature-item" role="tab">
+      <input type="radio" name="feature" aria-hidden="true">
+      <span class="text">الإعلانات</span>
+      <span class="line"></span>
+    </label>
+    <label class="feature-item" role="tab">
+      <input type="radio" name="feature" aria-hidden="true">
+      <span class="text">المتاجر</span>
+      <span class="line"></span>
+    </label>
+    <label class="feature-item" role="tab">
+      <input type="radio" name="feature" aria-hidden="true">
+      <span class="text">التوصيل</span>
+      <span class="line"></span>
+    </label>
+    <label class="feature-item" role="tab">
+      <input type="radio" name="feature" aria-hidden="true">
+      <span class="text">الأسواق الحية</span>
+      <span class="line"></span>
+    </label>
+    <label class="feature-item" role="tab">
+      <input type="radio" name="feature" aria-hidden="true">
+      <span class="text">دليل المواطن</span>
+      <span class="line"></span>
+    </label>
+  </div>
+</div>
 
-    <div class="section-title">تطبيقات الأحرار <span>عرض الكل</span></div>
-    <div class="apps-container">
+<div class="content-wrapper">
+  <div class="listings">
+
+    <div class="card">
+      <div class="emoji" aria-hidden="true">🚗</div>
+      <div class="info">
         
-        <a href="https://t.me/your_link" class="app-card">
-            <div class="img-box">
-                <svg viewBox="0 0 24 24"><path fill="#24A1DE" d="M11.944 0C5.346 0 0 5.346 0 11.944s5.346 11.944 11.944 11.944 11.944-5.346 11.944-11.944S18.542 0 11.944 0zm5.203 7.847l-1.742 8.215c-.132.581-.476.725-.963.451l-2.651-1.954-1.279 1.23c-.141.141-.26.26-.532.26l.191-2.703 4.919-4.445c.214-.19-.046-.296-.332-.106L8.71 13.13l-2.62-.819c-.57-.179-.581-.57.119-.844l10.23-3.942c.474-.173.888.11.708.322z"/></svg>
+        <div class="publisher-row">
+            <div class="publisher">
+              <div class="avatar">J</div>
+              <div class="publisher-details">
+                <span class="time-ago">
+                    الآن
+                    <svg width="13" height="13" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+                        <title id="title">ساعة</title>
+                        <desc id="desc">دائرة رمادية فارغة مع عقربين رماديين</desc>
+                    
+                        <circle cx="7" cy="7" r="6" fill="none" stroke="#777" stroke-width="1.8" />
+                    
+                        <g stroke="#777" stroke-width="1.8" stroke-linecap="round" fill="none">
+                            <line x1="7" y1="7" x2="7" y2="4.3" />
+                            <line x1="7" y1="7" x2="7" y2="4.3" transform="rotate(120 7 7)" />
+                        </g>
+                    
+                        <circle cx="7" cy="7" r="0.7" fill="#777" />
+                    </svg>
+                </span>
+                <span class="publisher-name"><span>jehad</span><span>mohamed</span></span> 
+              </div>
             </div>
-            <span class="app-label">تليجرام</span>
-            <span class="app-category">تواصل</span>
-        </a>
-
-        <a href="https://www.mediafire.com/" class="app-card">
-            <div class="img-box">
-                <svg viewBox="0 0 24 24"><path fill="#FF3131" d="M12 2L2 19h20L12 2zm0 3.8L18.3 17H5.7L12 5.8z"/></svg>
+            <button class="follow-btn"><span class="follow-text">متابعة</span></button>
+        </div>
+        
+        <div class="unified-title-row">
+            كورولا 2020، ممتازة، للبيع الفوري في طرابلس، سيارة عائلية بحالة ممتازة، صيانة دورية، خالية من الحوادث
+        </div>
+        
+        <div class="reaction-row" aria-label="أيقونات إضافية">
+            <span class="like-button-wrapper" aria-label="إيموجي قلب">
+                ❤️
+                <div class="reaction-bar">
+                    <span class="reaction-emoji">😂</span>
+                    <span class="reaction-emoji">❤️</span>
+                    <span class="reaction-emoji">😢</span>
+                    <span class="reaction-emoji">🔥</span>
+                </div>
+            </span>
+            
+            <span aria-label="إيموجي قلم">✍️</span>
+            
+            <div class="share-info">
+                <span class="share-count">420</span>
+                <svg class="share-icon" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM15.9201 9.24176C16.2506 8.50459 15.4954 7.74941 14.7582 8.07987L8.69274 10.7989C7.79973 11.1992 7.76142 12.4529 8.62833 12.907L9.89811 13.5721C10.1245 13.6907 10.3093 13.8755 10.4279 14.1019L11.093 15.3717C11.5471 16.2386 12.8008 16.2003 13.2011 15.3073L15.9201 9.24176Z" fill="#007bff"></path>
+                </svg>
             </div>
-            <span class="app-label">ألعاب مهكرة</span>
-            <span class="app-category">ترفيه</span>
-        </a>
-
+            
+        </div>
+        
+      </div>
     </div>
 
-    <div class="section-title">كورسات ومعرفة <span>جديد</span></div>
-    <div class="apps-container">
+    <div class="card">
+      <div class="emoji" aria-hidden="true">🏠</div>
+      <div class="info">
         
-        <a href="https://www.coursera.org" class="app-card">
-            <div class="img-box">
-                <svg viewBox="0 0 24 24"><path fill="#0056D2" d="M0 0h24v24H0z" fill="none"/><path fill="#0056D2" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L8 14v1c0 1.1.9 2 2 2v2.93zM18 14.5c-.5-.5-1.5-.5-1.5-2.5V10c0-1.1-.9-2-2-2h-3V5.07c3.95.49 7 3.85 7 7.93 0 .51-.05 1.01-.14 1.5z"/></svg>
+        <div class="publisher-row">
+            <div class="publisher">
+              <div class="avatar">ح</div>
+              <div class="publisher-details">
+                 <span class="time-ago">
+                    22 د
+                    <svg width="13" height="13" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+                        <title id="title">ساعة</title>
+                        <desc id="desc">دائرة رمادية فارغة مع عقربين رماديين</desc>
+                    
+                        <circle cx="7" cy="7" r="6" fill="none" stroke="#777" stroke-width="1.8" />
+                    
+                        <g stroke="#777" stroke-width="1.8" stroke-linecap="round" fill="none">
+                            <line x1="7" y1="7" x2="7" y2="4.3" />
+                            <line x1="7" y1="7" x2="7" y2="4.3" transform="rotate(120 7 7)" />
+                        </g>
+                    
+                        <circle cx="7" cy="7" r="0.7" fill="#777" />
+                    </svg>
+                </span>
+                <span class="publisher-name"><span>السويحلي</span><span>حمادة</span></span> 
+              </div>
             </div>
-            <span class="app-label">كورس برمجة</span>
-            <span class="app-category">تعليم</span>
-        </a>
-
-        <a href="https://archive.org" class="app-card">
-            <div class="img-box">
-                <svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2L1 21h22L12 2zm0 3.5L18.5 19H5.5L12 5.5z"/></svg>
+            <button class="follow-btn"><span class="follow-text">متابعة</span></button>
+        </div>
+        
+        <div class="unified-title-row">
+            فيلا فاخرة للإيجار اليومي في قلب بنغازي الجديدة، 5 غرف نوم، مسبح خاص، إطلالة رائعة على المدينة، سارع بالحجز
+        </div>
+        
+        <div class="reaction-row" aria-label="أيقونات إضافية">
+             <span class="like-button-wrapper" aria-label="إيموجي قلب">
+                ❤️
+                <div class="reaction-bar">
+                    <span class="reaction-emoji">😂</span>
+                    <span class="reaction-emoji">❤️</span>
+                    <span class="reaction-emoji">😢</span>
+                    <span class="reaction-emoji">🔥</span>
+                </div>
+            </span>
+            <span aria-label="إيموجي قلم">✍️</span>
+            
+            <div class="share-info">
+                <span class="share-count">1,390</span>
+                <svg class="share-icon" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM15.9201 9.24176C16.2506 8.50459 15.4954 7.74941 14.7582 8.07987L8.69274 10.7989C7.79973 11.1992 7.76142 12.4529 8.62833 12.907L9.89811 13.5721C10.1245 13.6907 10.3093 13.8755 10.4279 14.1019L11.093 15.3717C11.5471 16.2386 12.8008 16.2003 13.2011 15.3073L15.9201 9.24176Z" fill="#007bff"></path>
+                </svg>
             </div>
-            <span class="app-label">مكتبة الكتب</span>
-            <span class="app-category">أرشيف</span>
-        </a>
-
+            
+        </div>
+        
+      </div>
     </div>
 
-    <nav class="nav-bottom">
-        <a href="#" class="nav-item active">🏠<br>الرئيسية</a>
-        <a href="#" class="nav-item">🎮<br>ألعاب</a>
-        <a href="#" class="nav-item">📚<br>كورسات</a>
-        <a href="#" class="nav-item">⚙️<br>أدوات</a>
-    </nav>
+    <div class="card">
+      <div class="emoji" aria-hidden="true">📱</div>
+      <div class="info">
+        
+        <div class="publisher-row">
+            <div class="publisher">
+              <div class="avatar">A</div>
+              <div class="publisher-details">
+               <span class="time-ago">
+                   1 س
+                   <svg width="13" height="13" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+                        <title id="title">ساعة</title>
+                        <desc id="desc">دائرة رمادية فارغة مع عقربين رماديين</desc>
+                    
+                        <circle cx="7" cy="7" r="6" fill="none" stroke="#777" stroke-width="1.8" />
+                    
+                        <g stroke="#777" stroke-width="1.8" stroke-linecap="round" fill="none">
+                            <line x1="7" y1="7" x2="7" y2="4.3" />
+                            <line x1="7" y1="7" x2="7" y2="4.3" transform="rotate(120 7 7)" />
+                        </g>
+                    
+                        <circle cx="7" cy="7" r="0.7" fill="#777" />
+                    </svg>
+               </span>
+               <span class="publisher-name"><span>Ahmed</span><span>yosef</span></span>
+              </div>
+            </div>
+            <button class="follow-btn"><span class="follow-text">متابعة</span></button>
+        </div>
+        
+        <div class="unified-title-row">
+            آيفون 15 برو ماكس جديد، بضمان سنة كاملة من الشركة المصنعة، مفتوح على جميع الشبكات، لون أسود، سعة 256 جيجا
+        </div>
+        
+        <div class="reaction-row" aria-label="أيقونات إضافية">
+             <span class="like-button-wrapper" aria-label="إيموجي قلب">
+                ❤️
+                <div class="reaction-bar">
+                    <span class="reaction-emoji">😂</span>
+                    <span class="reaction-emoji">❤️</span>
+                    <span class="reaction-emoji">😢</span>
+                    <span class="reaction-emoji">🔥</span>
+                </div>
+            </span>
+            <span aria-label="إيموجي قلم">✍️</span>
+            
+            <div class="share-info">
+                <span class="share-count">2,538</span>
+                <svg class="share-icon" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM15.9201 9.24176C16.2506 8.50459 15.4954 7.74941 14.7582 8.07987L8.69274 10.7989C7.79973 11.1992 7.76142 12.4529 8.62833 12.907L9.89811 13.5721C10.1245 13.6907 10.3093 13.8755 10.4279 14.1019L11.093 15.3717C11.5471 16.2386 12.8008 16.2003 13.2011 15.3073L15.9201 9.24176Z" fill="#007bff"></path>
+                </svg>
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="emoji" aria-hidden="true">🛋️</div>
+      <div class="info">
+        
+        <div class="publisher-row">
+            <div class="publisher">
+              <div class="avatar">أ</div>
+              <div class="publisher-details">
+               <span class="time-ago">
+                   4 س
+                   <svg width="13" height="13" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+                        <title id="title">ساعة</title>
+                        <desc id="desc">دائرة رمادية فارغة مع عقربين رماديين</desc>
+                    
+                        <circle cx="7" cy="7" r="6" fill="none" stroke="#777" stroke-width="1.8" />
+                    
+                        <g stroke="#777" stroke-width="1.8" stroke-linecap="round" fill="none">
+                            <line x1="7" y1="7" x2="7" y2="4.3" />
+                            <line x1="7" y1="7" x2="7" y2="4.3" transform="rotate(120 7 7)" />
+                        </g>
+                    
+                        <circle cx="7" cy="7" r="0.7" fill="#777" />
+                    </svg>
+               </span>
+               <span class="publisher-name"><span>عبدالله</span><span>أماني</span></span> 
+              </div>
+            </div>
+            <button class="follow-btn"><span class="follow-text">متابعة</span></button>
+        </div>
+        
+        <div class="unified-title-row">
+            كنب زاوية (L Shape) مستعمل بحالة ممتازة جداً، لون بيج، قماش فاخر، قابل للفك والتركيب بسهولة
+        </div>
+        
+        <div class="reaction-row" aria-label="أيقونات إضافية">
+             <span class="like-button-wrapper" aria-label="إيموجي قلب">
+                ❤️
+                <div class="reaction-bar">
+                    <span class="reaction-emoji">😂</span>
+                    <span class="reaction-emoji">❤️</span>
+                    <span class="reaction-emoji">😢</span>
+                    <span class="reaction-emoji">🔥</span>
+                </div>
+            </span>
+            <span aria-label="إيموجي قلم">✍️</span>
+            
+            <div class="share-info">
+                <span class="share-count">811</span>
+                <svg class="share-icon" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM15.9201 9.24176C16.2506 8.50459 15.4954 7.74941 14.7582 8.07987L8.69274 10.7989C7.79973 11.1992 7.76142 12.4529 8.62833 12.907L9.89811 13.5721C10.1245 13.6907 10.3093 13.8755 10.4279 14.1019L11.093 15.3717C11.5471 16.2386 12.8008 16.2003 13.2011 15.3073L15.9201 9.24176Z" fill="#007bff"></path>
+                </svg>
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="emoji" aria-hidden="true">💼</div>
+      <div class="info">
+        
+        <div class="publisher-row">
+            <div class="publisher">
+              <div class="avatar">F</div>
+              <div class="publisher-details">
+               <span class="time-ago">
+                   1 ي
+                   <svg width="13" height="13" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+                        <title id="title">ساعة</title>
+                        <desc id="desc">دائرة رمادية فارغة مع عقربين رماديين</desc>
+                    
+                        <circle cx="7" cy="7" r="6" fill="none" stroke="#777" stroke-width="1.8" />
+                    
+                        <g stroke="#777" stroke-width="1.8" stroke-linecap="round" fill="none">
+                            <line x1="7" y1="7" x2="7" y2="4.3" />
+                            <line x1="7" y1="7" x2="7" y2="4.3" transform="rotate(120 7 7)" />
+                        </g>
+                    
+                        <circle cx="7" cy="7" r="0.7" fill="#777" />
+                    </svg>
+               </span>
+               <span class="publisher-name"><span>Fade</span><span>mohamed</span></span> 
+              </div>
+            </div>
+            <button class="follow-btn"><span class="follow-text">متابعة</span></button>
+        </div>
+        
+        <div class="unified-title-row">
+            فرصة عمل: مطلوب مصمم جرافيك بدوام كامل، خبرة لا تقل عن سنتين في السوق الليبي، إجادة برامج أدوبي
+        </div>
+        
+        <div class="reaction-row" aria-label="أيقونات إضافية">
+             <span class="like-button-wrapper" aria-label="إيموجي قلب">
+                ❤️
+                <div class="reaction-bar">
+                    <span class="reaction-emoji">😂</span>
+                    <span class="reaction-emoji">❤️</span>
+                    <span class="reaction-emoji">😢</span>
+                    <span class="reaction-emoji">🔥</span>
+                </div>
+            </span>
+            <span aria-label="إيموجي قلم">✍️</span>
+            
+            <div class="share-info">
+                <span class="share-count">65</span>
+                <svg class="share-icon" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM15.9201 9.24176C16.2506 8.50459 15.4954 7.74941 14.7582 8.07987L8.69274 10.7989C7.79973 11.1992 7.76142 12.4529 8.62833 12.907L9.89811 13.5721C10.1245 13.6907 10.3093 13.8755 10.4279 14.1019L11.093 15.3717C11.5471 16.2386 12.8008 16.2003 13.2011 15.3073L15.9201 9.24176Z" fill="#007bff"></path>
+                </svg>
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="emoji" aria-hidden="true">🚴</div>
+      <div class="info">
+        
+        <div class="publisher-row">
+            <div class="publisher">
+              <div class="avatar">أ</div>
+              <div class="publisher-details">
+               <span class="time-ago">
+                   2 ي
+                   <svg width="13" height="13" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+                        <title id="title">ساعة</title>
+                        <desc id="desc">دائرة رمادية فارغة مع عقربين رماديين</desc>
+                    
+                        <circle cx="7" cy="7" r="6" fill="none" stroke="#777" stroke-width="1.8" />
+                    
+                        <g stroke="#777" stroke-width="1.8" stroke-linecap="round" fill="none">
+                            <line x1="7" y1="7" x2="7" y2="4.3" />
+                            <line x1="7" y1="7" x2="7" y2="4.3" transform="rotate(120 7 7)" />
+                        </g>
+                    
+                        <circle cx="7" cy="7" r="0.7" fill="#777" />
+                    </svg>
+               </span>
+               <span class="publisher-name"><span>الترهوني</span><span>أيمن</span></span> 
+              </div>
+            </div>
+            <button class="follow-btn"><span class="follow-text">متابعة</span></button>
+        </div>
+        
+        <div class="unified-title-row">
+            دراجة هوائية رياضية مقاس 26، خفيفة الوزن، مناسبة للرحلات الطويلة، إطارات جديدة، فرامل قوية
+        </div>
+        
+        <div class="reaction-row" aria-label="أيقونات إضافية">
+             <span class="like-button-wrapper" aria-label="إيموجي قلب">
+                ❤️
+                <div class="reaction-bar">
+                    <span class="reaction-emoji">😂</span>
+                    <span class="reaction-emoji">❤️</span>
+                    <span class="reaction-emoji">😢</span>
+                    <span class="reaction-emoji">🔥</span>
+                </div>
+            </span>
+            <span aria-label="إيموجي قلم">✍️</span>
+            
+            <div class="share-info">
+                <span class="share-count">19</span>
+                <svg class="share-icon" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM15.9201 9.24176C16.2506 8.50459 15.4954 7.74941 14.7582 8.07987L8.69274 10.7989C7.79973 11.1992 7.76142 12.4529 8.62833 12.907L9.89811 13.5721C10.1245 13.6907 10.3093 13.8755 10.4279 14.1019L11.093 15.3717C11.5471 16.2386 12.8008 16.2003 13.2011 15.3073L15.9201 9.24176Z" fill="#007bff"></path>
+                </svg>
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="emoji" aria-hidden="true">🐶</div>
+      <div class="info">
+        
+        <div class="publisher-row">
+            <div class="publisher">
+              <div class="avatar">R</div>
+              <div class="publisher-details">
+                <span class="time-ago">
+                    1 أ
+                    <svg width="13" height="13" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+                        <title id="title">ساعة</title>
+                        <desc id="desc">دائرة رمادية فارغة مع عقربين رماديين</desc>
+                    
+                        <circle cx="7" cy="7" r="6" fill="none" stroke="#777" stroke-width="1.8" />
+                    
+                        <g stroke="#777" stroke-width="1.8" stroke-linecap="round" fill="none">
+                            <line x1="7" y1="7" x2="7" y2="4.3" />
+                            <line x1="7" y1="7" x2="7" y2="4.3" transform="rotate(120 7 7)" />
+                        </g>
+                    
+                        <circle cx="7" cy="7" r="0.7" fill="#777" />
+                    </svg>
+                </span>
+                <span class="publisher-name"><span>Raneem</span><span>Khalid</span></span> 
+              </div>
+            </div>
+            <button class="follow-btn"><span class="follow-text">متابعة</span></button>
+        </div>
+        
+        <div class="unified-title-row">
+            كلب جيرمن شيبرد أصيل للتبني (بشروط)، مدرب تدريب أساسي، مطعم جميع اللقاحات، ودود مع الأطفال
+        </div>
+        
+        <div class="reaction-row" aria-label="أيقونات إضافية">
+             <span class="like-button-wrapper" aria-label="إيموجي قلب">
+                ❤️
+                <div class="reaction-bar">
+                    <span class="reaction-emoji">😂</span>
+                    <span class="reaction-emoji">❤️</span>
+                    <span class="reaction-emoji">😢</span>
+                    <span class="reaction-emoji">🔥</span>
+                </div>
+            </span>
+            <span aria-label="إيموجي قلم">✍️</span>
+            
+            <div class="share-info">
+                <span class="share-count">92</span>
+                <svg class="share-icon" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM15.9201 9.24176C16.2506 8.50459 15.4954 7.74941 14.7582 8.07987L8.69274 10.7989C7.79973 11.1992 7.76142 12.4529 8.62833 12.907L9.89811 13.5721C10.1245 13.6907 10.3093 13.8755 10.4279 14.1019L11.093 15.3717C11.5471 16.2386 12.8008 16.2003 13.2011 15.3073L15.9201 9.24176Z" fill="#007bff"></path>
+                </svg>
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="emoji" aria-hidden="true">🎸</div>
+      <div class="info">
+        
+        <div class="publisher-row">
+            <div class="publisher">
+              <div class="avatar">S</div>
+              <div class="publisher-details">
+                <span class="time-ago">
+                    1 ش
+                    <svg width="13" height="13" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+                        <title id="title">ساعة</title>
+                        <desc id="desc">دائرة رمادية فارغة مع عقربين رماديين</desc>
+                    
+                        <circle cx="7" cy="7" r="6" fill="none" stroke="#777" stroke-width="1.8" />
+                    
+                        <g stroke="#777" stroke-width="1.8" stroke-linecap="round" fill="none">
+                            <line x1="7" y1="7" x2="7" y2="4.3" />
+                            <line x1="7" y1="7" x2="7" y2="4.3" transform="rotate(120 7 7)" />
+                        </g>
+                    
+                        <circle cx="7" cy="7" r="0.7" fill="#777" />
+                    </svg>
+                </span>
+                <span class="publisher-name"><span>Sarah</span><span>Jones</span></span> 
+              </div>
+            </div>
+            <button class="follow-btn"><span class="follow-text">متابعة</span></button>
+        </div>
+        
+        <div class="unified-title-row">
+            آلة عود شرقي احترافي، خشب روزوود، جديد، صوت نقي وقوي، صناعة يدوية، مع حقيبة مبطنة
+        </div>
+        
+        <div class="reaction-row" aria-label="أيقونات إضافية">
+             <span class="like-button-wrapper" aria-label="إيموجي قلب">
+                ❤️
+                <div class="reaction-bar">
+                    <span class="reaction-emoji">😂</span>
+                    <span class="reaction-emoji">❤️</span>
+                    <span class="reaction-emoji">😢</span>
+                    <span class="reaction-emoji">🔥</span>
+                </div>
+            </span>
+            <span aria-label="إيموجي قلم">✍️</span>
+            
+            <div class="share-info">
+                <span class="share-count">21</span>
+                <svg class="share-icon" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM15.9201 9.24176C16.2506 8.50459 15.4954 7.74941 14.7582 8.07987L8.69274 10.7989C7.79973 11.1992 7.76142 12.4529 8.62833 12.907L9.89811 13.5721C10.1245 13.6907 10.3093 13.8755 10.4279 14.1019L11.093 15.3717C11.5471 16.2386 12.8008 16.2003 13.2011 15.3073L15.9201 9.24176Z" fill="#007bff"></path>
+                </svg>
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-nav" role="navigation" aria-label="القائمة السفلية">
+  <div role="button" aria-label="الرئيسية">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+    الرئيسية
+  </div>
+  
+  <div class="publish-btn" role="button" aria-label="نشر">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+      </svg>
+  </div>
+  
+  <div role="button" aria-label="حسابي">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+    </svg>
+    حسابي
+  </div>
+</div>
 
 </body>
 </html>
