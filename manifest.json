@@ -1,7 +1,7 @@
 {
-  "name": "Liogram",
+  "name": "الأسد",
   "short_name": "الأسد",
-  "description": "اكبر منصة عربية للسوشيال ميديا وجميع الخدمات",
+  "description": "اكبر منصة عربية للسوشيال ميديا وجميع خدماتها",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
