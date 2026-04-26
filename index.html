@@ -1140,6 +1140,30 @@ body{background:#f5f5f5;color:#111}
     حسابي
   </div>
 </div>
+<script>
+let deferredPrompt;
+
+// 1. التقاط حدث التثبيت
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+});
+
+// 2. تفعيل التثبيت عند الضغط على زر القائمة
+document.addEventListener('click', async (e) => {
+    // التحقق من الضغط على زر القائمة (menu-btn)
+    if (e.target.closest('.menu-btn')) { 
+        if (deferredPrompt) {
+            deferredPrompt.prompt(); // إظهار نافذة التثبيت
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                console.log('تم التثبيت بنجاح');
+            }
+            deferredPrompt = null;
+        }
+    }
+});
+</script>
 
 </body>
 </html>
