@@ -1,0 +1,21 @@
+{
+  "name": "Liogram",
+  "short_name": "الأسد",
+  "description": "اكبر منصة عربية للسوشيال ميديا وجميع الخدمات",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FFD700",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
